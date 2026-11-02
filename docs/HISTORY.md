@@ -87,4 +87,5 @@ Verified at 1440×800. Mobile is unchanged (no pin, all steps expanded).
   `CNAME www` pointed to `tambatechai.github.io`. MX, SPF and the Microsoft 365 CNAMEs untouched.
 - Pages enabled from `main`, root. The `CNAME` file in the repo filled the custom domain automatically.
   DNS check passed, Let's Encrypt certificate issued within a minute, "Enforce HTTPS" turned on.
-- Verified: https://tambatech.ai serves the site, www redirects to the apex, http redirects to https.
+- Verified: https://tambatech.ai serves the site and www redirects to the apex. The http to https redirect
+  was still propagating a few minutes after enabling Enforce HTTPS (GitHub says it can take a while).

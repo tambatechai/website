@@ -71,3 +71,11 @@ Verified at 1440×800. Mobile is unchanged (no pin, all steps expanded).
 - The source SVG had no viewBox (fixed 220×220), so a copy with `viewBox="4 4 212 212"` lives at
   `assets/brand/babson-college-seal.svg`. Original single color kept.
 - Open: confirm Babson permits use of the seal.
+
+## 2026-11-02 · First push to GitHub
+
+- Organization created by the founder: `tambatechai` (github.com/tambatechai). Repo `website`, created private
+  and empty, then `main` pushed over SSH from the founder's Mac (ed25519 key, GitHub user `lucastambatechai`).
+- `gh` and Homebrew are not installed on that machine; git over SSH is the only path.
+- Next: make the repo public, enable Pages (branch `main`, root), point GoDaddy DNS at GitHub Pages
+  (`CNAME www` to `tambatechai.github.io`), then enforce HTTPS.

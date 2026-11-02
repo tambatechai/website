@@ -164,7 +164,7 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ## Deployment
 
 - Hosting: **GitHub Pages**, from branch `main`, root folder. Repo is **public** (founder's decision, Brand/ included).
-- GitHub organization for Tamba Tech, owner account email `lucas@tambatech.ai`. Repo name planned: `website`.
+- GitHub organization `tambatechai` (https://github.com/tambatechai), owner account `lucastambatechai`, email `lucas@tambatech.ai`. Repo: `tambatechai/website`, remote `origin` over SSH (key `~/.ssh/id_ed25519` on the founder's Mac).
 - `CNAME` file holds `tambatech.ai`. `.nojekyll` disables Jekyll so files are served as is.
 - Git identity for this repo (local config): Lucas Almeida <lucas@tambatech.ai>.
 - Domain `tambatech.ai` is registered at **GoDaddy**, DNS on GoDaddy (ns03/ns04.domaincontrol.com).
@@ -172,6 +172,6 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   the SPF TXT record (`v=spf1 include:spf.protection.outlook.com -all`) when changing DNS.
 - DNS records for GitHub Pages (website only):
   - `A @` → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 (remove GoDaddy parking A records)
-  - `CNAME www` → `<org>.github.io`
+  - `CNAME www` → `tambatechai.github.io`
   - After DNS resolves, enable "Enforce HTTPS" in the repo's Pages settings.
 - Publishing a change = commit and push to `main`. Pages redeploys in about a minute.

@@ -156,7 +156,6 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 - Mock UI numbers ("38 seconds", "214 documents", "94%", etc.) are illustrative. Replace them if real results exist.
 - "A partner replies within two business days." Not yet confirmed.
 - The form opens the visitor's email app (mailto). Consider Formspree or similar to receive submissions directly.
-- Hosting not chosen yet (Netlify, Vercel or GitHub Pages all work, since the site is static).
 - Confirm Babson allows its seal on the site (institutional seals often need approval; the Babson brand
   team or the entrepreneurship center can confirm). Easy to swap for a text-only credit if needed.
 - `og:image` uses the app icon. A proper 1200×630 social image would be better.

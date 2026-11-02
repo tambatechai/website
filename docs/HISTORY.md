@@ -79,3 +79,12 @@ Verified at 1440×800. Mobile is unchanged (no pin, all steps expanded).
 - `gh` and Homebrew are not installed on that machine; git over SSH is the only path.
 - Next: make the repo public, enable Pages (branch `main`, root), point GoDaddy DNS at GitHub Pages
   (`CNAME www` to `tambatechai.github.io`), then enforce HTTPS.
+
+## 2026-11-02 · Site live at tambatech.ai
+
+- Repo `tambatechai/website` switched to public by the founder (Pages needs a public repo on the Free plan).
+- GoDaddy DNS edited through the founder's Chrome: parking A record replaced by the four GitHub Pages IPs,
+  `CNAME www` pointed to `tambatechai.github.io`. MX, SPF and the Microsoft 365 CNAMEs untouched.
+- Pages enabled from `main`, root. The `CNAME` file in the repo filled the custom domain automatically.
+  DNS check passed, Let's Encrypt certificate issued within a minute, "Enforce HTTPS" turned on.
+- Verified: https://tambatech.ai serves the site, www redirects to the apex, http redirects to https.

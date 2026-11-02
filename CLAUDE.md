@@ -169,8 +169,9 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 - Domain `tambatech.ai` is registered at **GoDaddy**, DNS on GoDaddy (ns03/ns04.domaincontrol.com).
 - **Email runs on Microsoft 365.** Never touch the MX record (`tambatech-ai.mail.protection.outlook.com`) or
   the SPF TXT record (`v=spf1 include:spf.protection.outlook.com -all`) when changing DNS.
-- DNS records for GitHub Pages (website only):
-  - `A @` → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 (remove GoDaddy parking A records)
+- **Live since 2026-11-02 at https://tambatech.ai** (www redirects to the apex). Pages: branch `main`, root,
+  custom domain `tambatech.ai`, Enforce HTTPS on. Certificate by Let's Encrypt, renewed by GitHub.
+- DNS records in place for GitHub Pages (website only):
+  - `A @` → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 (GoDaddy parking A record replaced)
   - `CNAME www` → `tambatechai.github.io`
-  - After DNS resolves, enable "Enforce HTTPS" in the repo's Pages settings.
 - Publishing a change = commit and push to `main`. Pages redeploys in about a minute.

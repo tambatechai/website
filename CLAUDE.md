@@ -70,7 +70,10 @@ overline 13px uppercase with 0.16em tracking.
 - Avoid AI clichés: brains, node networks, sparkles, robots, futuristic photos.
 - Name origin lives in the story (text), never as a fish illustration. "The visual speaks technology."
 
-**Taglines:** "Adapt. Transform. Scale." (main) · "Applied AI that already works at scale." (hero).
+**Taglines:** "Adapt. Transform. Scale." (main) · "AI that shows up on your P&L." (hero, since 2026-11-02).
+The site's thesis is money in the client's pocket: more revenue or lower cost. Show the dollar figure instead of
+saying "ROI" (that word appears at most once on the page, today zero). Every strong claim is backed by a rule we
+follow, never a loose promise.
 
 ## Files
 
@@ -91,17 +94,25 @@ CDN scripts (pinned versions, loaded with `defer`): GSAP 3.12.5, ScrollTrigger 3
 2. **Nav**: fixed, glass when scrolled, hides on scroll down, shows on scroll up. Swaps light and dark logo by
    reading the `data-theme` of the section under it. Mobile: burger with full-screen menu.
 3. **Hero** (navy): line-mask headline reveal, arc draws in, content fades and lifts on scroll.
-4. **Statement** (ivory): words light up one by one with scroll (`[data-words]`).
-5. **Solutions** `#solutions`: bento with 3 cards (Implementation, Proven solutions, Incubation) and mini animations.
-6. **In practice** `#practice` (navy): 3 auto-playing tabs with mock UIs (Customer service, Back office,
-   Forecasting). 8 seconds each, progress bar, pause when off screen. Labeled "Illustrative examples."
-7. **How we work** `#process`: pinned on desktop. The orbit fills with scroll, the dot rides the tip, number 01 to 04.
-   Only the active step shows its description (accordion) so the column fits one screen.
-8. **Principles**: 4 columns.
+4. **Statement** (ivory): words light up one by one with scroll (`[data-words]`). "Every project we take on has
+   one job: more revenue or less cost."
+5. **Solutions** `#solutions`: "Two ways we pay for ourselves." Two lever cards (`.levers`): More revenue (light)
+   and Lower cost (navy), each with 4 product lines and a link to the form that preselects the interest.
+   Below, "How we deliver": bento with 3 equal cards (Implementation, Proven solutions, Incubation).
+6. **In practice** `#practice` (navy): 4 auto-playing tabs with mock UIs, each labeled with its lever:
+   Revenue · Pricing (credit rate at checkout, net margin +0.9 pts), Cost · Customer service ($3.80 instead of $11),
+   Cost · Back office (61 hours back this week), Cost · Forecasting ($18,400 not overbought).
+   8 seconds each, progress bar, pause when off screen. Labeled "Illustrative examples."
+   Counters: `.count` with `data-to`, optional `data-dec` (decimals) and `data-money` (thousands separators).
+7. **How we work** `#process`: pinned on desktop. Steps: Find the money, Adapt, Prove it, Spread it. The orbit fills
+   with scroll, the dot rides the tip, number 01 to 04. Only the active step shows its description (accordion).
+8. **Principles**: 4 columns (Production first, Paid back, Your data stays yours, Two markets).
 9. **Incubation** `#incubation` (navy): symbol explained (T, ring, dot), symbol draws on enter.
 10. **Origin / About** `#about`: "Adapt. Transform. Scale." slide in; tambaqui story; 4 trait cards
     (Adapt, Transform, Spread, Connect) each with "In the river" / "In our work"; "Tamba is not the product."
-11. **Contact** `#contact` (navy): form composes a `mailto:` to `CONTACT_EMAIL` in `main.js`.
+11. **Contact** `#contact` (navy): "Let's find the money in your operation." Interest pills: More revenue,
+    Lower cost, Incubation. Question: "Where is your operation losing money today?" The form composes a
+    `mailto:` to `CONTACT_EMAIL` in `main.js`.
 12. **Footer**.
 
 ## Engineering rules and gotchas (learned the hard way)
@@ -153,7 +164,16 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 ## Open items (ask before publishing)
 
-- Mock UI numbers ("38 seconds", "214 documents", "94%", etc.) are illustrative. Replace them if real results exist.
+- Mock UI numbers ("38 seconds", "$3.80 instead of $11", "61 hours", "$18,400", "+0.9 pts", etc.) are
+  illustrative. Replace them if real results exist.
+- **Proof band under the hero** (pending): "+1% net profit in one year. A credit pricing engine we run at one of the
+  largest retailers in northern Brazil." Needs Denis to release the number and say whether the client can be named.
+  Not on the site. Until then the hero stays as is; if the founders prefer a softer title without proof, the
+  fallback is "We put money back in your business."
+- **Commercial guarantee** (pending): "If the pilot doesn't move the number we agreed on, you don't pay to scale it."
+  Changes the billing model. Decide with Daniel before adding it to the process section.
+- **Do not name the client company yet** (founder's instruction, 2026-11-02). Products from that operation can be
+  described, the name cannot.
 - "A partner replies within two business days." Not yet confirmed.
 - The form opens the visitor's email app (mailto). Consider Formspree or similar to receive submissions directly.
 - Confirm Babson allows its seal on the site (institutional seals often need approval; the Babson brand

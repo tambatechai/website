@@ -89,3 +89,29 @@ Verified at 1440×800. Mobile is unchanged (no pin, all steps expanded).
   DNS check passed, Let's Encrypt certificate issued within a minute, "Enforce HTTPS" turned on.
 - Verified: https://tambatech.ai serves the site and www redirects to the apex. The http to https redirect
   was still propagating a few minutes after enabling Enforce HTTPS (GitHub says it can take a while).
+
+## 2026-11-02 · Money in the pocket (co-founder feedback)
+
+A co-founder asked to push the "money in your pocket" angle, more revenue or lower cost, and to be aggressive
+about it without sounding like AI copy. The rule applied: show the dollar figure instead of talking about ROI,
+and back every strong claim with a rule we follow.
+
+- Hero: "AI that shows up on your P&L." Lead: "Every project we run has to raise revenue or cut cost. If we
+  can't point to the number, we don't start." Title, meta description and og:description updated.
+- Statement: "Every project we take on has one job: more revenue or less cost. We agree on the number before
+  we start and we stay until you see it."
+- Solutions rebuilt as "Two ways we pay for ourselves.": two lever cards (More revenue, Lower cost) listing the
+  product lines, each linking to the form with the interest preselected. The three delivery cards moved under a
+  "How we deliver" subhead as three equal columns.
+- In practice: new first tab "Revenue · Pricing" (credit rate at checkout, margin bars, "+0.9 pts"). The three
+  cost tabs got a lever label and a money line: "$3.80 instead of $11", "61 hours back this week",
+  "$18,400 in stock you didn't overbuy". Footnote now says the figures are typical, not a promise.
+  `countUp` learned `data-dec` and `data-money`.
+- Process steps: Find the money, Adapt, Prove it, Spread it. Deploy copy: "against a dollar baseline we agree on
+  up front. No baseline, no pilot."
+- Principle "Measured" became "Paid back".
+- Contact: "Let's find the money in your operation.", pills More revenue / Lower cost / Incubation, question
+  "Where is your operation losing money today?"
+- Left out on purpose: the "+1% net profit" proof band (needs the client's OK on the number and on being named)
+  and the commercial guarantee (billing model decision). The client is not named anywhere.
+- Checked in Chrome at 1440×800 and 500px wide: no console errors, all four demos animate, process pin fits.

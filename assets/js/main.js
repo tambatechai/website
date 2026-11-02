@@ -267,7 +267,7 @@
     let progTl = null;
     let inView = false;
 
-    const builders = [buildService, buildDocs, buildForecast];
+    const builders = [buildPricing, buildService, buildDocs, buildForecast];
 
     function show(i, autoplay = true) {
       active = i;
@@ -327,6 +327,26 @@
     }
 
     /* --- demo builders --- */
+    function buildPricing(el) {
+      const steps = $$('[data-step]', el);
+      const chips = $$('[data-chip]', el);
+      const bars = $$('.margin-bars i', el);
+      const counts = $$('.count', el);
+      chips.forEach((c) => c.classList.remove('on'));
+      g.set(steps, { opacity: 0, y: 12 });
+      g.set(bars, { scaleY: 0 });
+      counts.forEach((c) => { c.textContent = fmtCount(c, 0); });
+      const tl = g.timeline({ delay: 0.3 });
+      tl.to(steps[0], { opacity: 1, y: 0, duration: 0.5 })
+        .to(steps[1], { opacity: 1, y: 0, duration: 0.4 }, '+=0.4');
+      chips.forEach((c) => tl.add(() => c.classList.add('on'), '+=0.5'));
+      tl.to(steps[2], { opacity: 1, y: 0, duration: 0.5 }, '+=0.4')
+        .to(steps[3], { opacity: 1, y: 0, duration: 0.5 }, '+=0.5')
+        .to(bars, { scaleY: 1, duration: 0.8, stagger: 0.07, ease: 'power3.out' }, '<');
+      counts.forEach((c) => tl.add(countUp(c), '<+=0.2'));
+      return tl;
+    }
+
     function buildService(el) {
       const steps = $$('[data-step]', el);
       const chips = $$('[data-chip]', el);
@@ -348,7 +368,7 @@
       const counts = $$('.count', el);
       g.set(rows, { opacity: 0, y: 10 });
       g.set(foot, { opacity: 0 });
-      counts.forEach((c) => { c.textContent = '0'; });
+      counts.forEach((c) => { c.textContent = fmtCount(c, 0); });
       const tl = g.timeline({ delay: 0.2 });
       rows.forEach((row, r) => {
         const states = $$('.doc-status b', row);
@@ -374,7 +394,7 @@
       const counts = $$('.count', el);
       g.set(bars, { scaleY: 0 });
       g.set(note, { opacity: 0, y: 8 });
-      counts.forEach((c) => { c.textContent = '0'; });
+      counts.forEach((c) => { c.textContent = fmtCount(c, 0); });
       const tl = g.timeline({ delay: 0.3 });
       counts.forEach((c) => tl.add(countUp(c), 0));
       tl.to(bars, { scaleY: 1, duration: 1, stagger: 0.08, ease: 'power3.out' }, 0.2)
@@ -382,20 +402,27 @@
       return tl;
     }
 
+    // data-dec: decimals to show. data-money: thousands separators (en-US).
+    function fmtCount(elm, v) {
+      const dec = +(elm.dataset.dec || 0);
+      if ('money' in elm.dataset) return v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+      return v.toFixed(dec);
+    }
+
     function countUp(elm) {
       const to = +elm.dataset.to;
       const o = { v: 0 };
-      return g.to(o, { v: to, duration: 1.4, ease: 'power2.out', onUpdate: () => { elm.textContent = Math.round(o.v); } });
+      return g.to(o, { v: to, duration: 1.4, ease: 'power2.out', onUpdate: () => { elm.textContent = fmtCount(elm, o.v); } });
     }
 
     function staticState(el) {
-      $$('.count', el).forEach((c) => { c.textContent = c.dataset.to; });
+      $$('.count', el).forEach((c) => { c.textContent = fmtCount(c, +c.dataset.to); });
       $$('[data-chip]', el).forEach((c) => c.classList.add('on'));
       $$('.doc-status', el).forEach((s) => {
         const b = $$('b', s);
         b.forEach((x, k) => { x.style.opacity = k === b.length - 1 ? 1 : 0; });
       });
-      $$('.bar i', el).forEach((b) => { b.style.transform = 'none'; });
+      $$('.bar i, .margin-bars i', el).forEach((b) => { b.style.transform = 'none'; });
     }
   }
 

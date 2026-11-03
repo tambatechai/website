@@ -224,3 +224,14 @@ and back every strong claim with a rule we follow.
   pip package and re-encoded from the 4K source: seconds 5 to 17 (sun on the water), 1920×1080, 30 fps,
   `hqdn3d=1.5:1.5:4:4`, VP9 two-pass `-b:v 3500k -maxrate 5000k -crf 32` (5.3 MB) and x264 `-crf 23 -maxrate 5000k`
   (8 MB). Uncapped CRF encodes of this footage ran at 16 to 90 Mbps because of water noise, hence the caps.
+
+## 2026-11-03 · Less text
+
+- The founder felt the site still had too much text. Cuts, all three languages: the tambaqui paragraph lost its
+  clauses ("Its river rises and falls by meters every year, and it thrives in both seasons."); the river caption is
+  now just "A river in the Amazon." (the paragraph above already says the rest); each trait card keeps the two
+  labels but one short sentence under each (Adapt lost the "technology has to keep up" line, Spread and Connect
+  were folded into one sentence each); the closing paragraph dropped "The story stays the same as the technology
+  changes."; the Solutions lead is now only "You pick the side where your operation is losing money."; the pricing
+  and customer service demo descriptions lost a few words each. Nothing was cut from the hero, statement, process,
+  principles, incubation or contact. Roughly a third less text in About.

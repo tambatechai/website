@@ -218,3 +218,9 @@ and back every strong claim with a rule we follow.
   framed instead, see CLAUDE.md brand rules (no gradients or glows) and the reasoning in the chat of that day.
 - "Sangra": the video now runs edge to edge of the viewport (100vw trick), no radius, up to 760px tall, caption
   aligned with the container. The campus photo stays inside the container with rounded corners.
+- Quality pass (same day): the founder found the video soft. Causes: the browser's real-time encoder, and 720p
+  stretched edge to edge on retina screens. Also found that the clip is 21 s long, not 4 (Chrome had misread the
+  duration over a server without range support). With the founder's OK, installed ffmpeg via the `imageio-ffmpeg`
+  pip package and re-encoded from the 4K source: seconds 5 to 17 (sun on the water), 1920×1080, 30 fps,
+  `hqdn3d=1.5:1.5:4:4`, VP9 two-pass `-b:v 3500k -maxrate 5000k -crf 32` (5.3 MB) and x264 `-crf 23 -maxrate 5000k`
+  (8 MB). Uncapped CRF encodes of this footage ran at 16 to 90 Mbps because of water noise, hence the caps.

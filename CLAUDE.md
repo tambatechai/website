@@ -188,16 +188,17 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   team comes from) and the river (where the name comes from), both in About. Do not add others or reuse them
   elsewhere. Photo and logo belong to Babson: same permission conversation.
 - **River video** (2026-11-03): a Pexels clip chosen by the founder, low camera gliding over a dark river
-  (Pexels 13455995; source in `Brand/videos/`, git ignored, 4K 60fps). `assets/media/river.webm` (VP9, 1280×720,
-  4 s loop, 5.4 MB) with `river.mp4` (H.264, 6.8 MB) as fallback, poster `river-poster.webp`. The water detail
-  makes it heavier than a drone shot; it still only loads near the viewport. No fish on screen (brand rule), no text over the video.
+  (Pexels 13455995; source in `Brand/videos/`, git ignored, 4K 60fps, 21 s). On the site: seconds 5 to 17 of it,
+  `assets/media/river.webm` (VP9 two-pass, 1920×1080, 30 fps, 12 s loop, 5.3 MB) with `river.mp4` (H.264 CRF 23,
+  8 MB) as fallback, poster `river-poster.webp` (1920 wide, 240 KB). It only loads near the viewport. No fish on screen (brand rule), no text over the video.
   Full bleed, edge to edge of the viewport (`width: 100vw; margin-left: calc(50% - 50vw)`), no radius, height
   clamp(260px, 50vw, 760px); the caption stays aligned with the container. Caption: "A river in the Amazon. It
   rises and falls by meters every year." Location unknown, so the caption
-  does not name a river. Making the files: this Mac has no ffmpeg; `avconvert` (macOS) downscales to 720p
-  (`--preset Preset1280x720`, also `--start/--duration` to trim) but cannot set a bitrate, so the final encode was
-  done in Chrome with a canvas + MediaRecorder page posting the blob to a tiny local Python server (see
-  docs/HISTORY.md, 2026-11-03). (The seal was used until 2026-11-03.)
+  does not name a river. Making the files: ffmpeg 7.1 comes from the `imageio-ffmpeg` pip package
+  (`python3 -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())"` prints the binary path). Recipe
+  in docs/HISTORY.md (2026-11-03): lanczos scale to 1080p, 30 fps, light `hqdn3d` denoise (the water is noisy and
+  eats bitrate), VP9 two-pass with a 5 Mbps cap, x264 CRF 23 with a 5 Mbps cap. Do not use the browser
+  MediaRecorder route again: real-time encoding looked soft. (The seal was used until 2026-11-03.)
 - **Bemol is not on the site until there is an official OK** (founder, 2026-11-03, after a few hours with an
   "Anchor partner" band under the hero). When the OK comes, rebuild the band from the 2026-11-03 entry in
   `docs/HISTORY.md` (logo from bemol.com.br in its own colors, link to https://www.bemol.com.br) and add ES/PT

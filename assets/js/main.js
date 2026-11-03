@@ -26,6 +26,7 @@
     initMenu(null);
     initTabs(null);
     initForm();
+    staticHero();
     return;
   }
 
@@ -33,18 +34,23 @@
   gsap.defaults({ ease: 'power3.out' });
 
   // If animation frames never run (very old device, frozen tab), fall back to the static page.
-  setTimeout(() => {
+  // A background tab gets no frames either, so wait until it is visible before deciding.
+  const fallback = () => {
     if (gsap.ticker.frame > 3) return;
+    if (document.hidden) { setTimeout(fallback, 1500); return; }
     gsap.globalTimeline.clear();
     root.classList.remove('js');
     $$('[style]').forEach((el) => {
       if (el.closest('svg')) return;
-      if (el.matches('.tl-bar, .bar')) return;
+      if (el.matches('.tl-bar, .bar, .margin-bars i')) return;
       el.removeAttribute('style');
     });
     $$('.hero-arc-path, .orbit-fill').forEach((p) => { p.style.strokeDashoffset = 0; });
+    staticHero();
     const pl = $('#preloader'); if (pl) pl.remove();
-  }, 4500);
+    if (lenis) lenis.start();
+  };
+  setTimeout(fallback, 4500);
 
   /* ---------- Smooth scroll ---------- */
   let lenis = null;
@@ -75,6 +81,12 @@
     if (heroArc) {
       tl.to(heroArc, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' }, 0)
         .from(heroDot, { scale: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.out(2)' }, 2.0);
+    }
+    const mock = $('.hero-visual');
+    if (mock) {
+      tl.to(mock, { opacity: 1, duration: 0.9 }, 0.7)
+        .from(mock, { y: 28, duration: 1.1, ease: 'power3.out' }, 0.7)
+        .add(heroMockIntro(), 1.0);
     }
     return tl;
   }
@@ -111,7 +123,8 @@
   if (reduce) {
     initTabs(null);
     initStages();
-    $$('.solutions .card').forEach((c) => c.classList.add('is-in'));
+    staticHero();
+    $$('.solutions .card, .solutions .lever').forEach((c) => c.classList.add('is-in'));
     const od = $('.orbit-dot');
     if (od) { od.setAttribute('cx', '51.1'); od.setAttribute('cy', '51.1'); }
     const on = $('#orbit-num'); if (on) on.textContent = '04';
@@ -127,6 +140,11 @@
     yPercent: 14, scale: 1.08, ease: 'none',
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
   });
+  gsap.to('.hero-visual', {
+    yPercent: -6, opacity: 0, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+  });
+  initHeroMockLoop();
 
   /* ---------- Statement: words light up with scroll ---------- */
   $$('[data-words]').forEach((el) => {
@@ -146,7 +164,7 @@
   });
 
   /* ---------- Bento visuals ---------- */
-  $$('.solutions .card').forEach((card) => {
+  $$('.solutions .card, .solutions .lever').forEach((card) => {
     ScrollTrigger.create({ trigger: card, start: 'top 75%', once: true, onEnter: () => card.classList.add('is-in') });
   });
   initStages();
@@ -195,6 +213,60 @@
     const len = path.getTotalLength();
     path.style.strokeDasharray = `${len} ${len}`;
     path.style.strokeDashoffset = len;
+  }
+
+  /* ---------- Hero mock: the pricing engine working through sales ---------- */
+  function staticHero() {
+    const el = $('.hero-visual');
+    if (!el) return;
+    $$('.chip', el).forEach((c) => c.classList.add('on'));
+    $$('.margin-bars i', el).forEach((b) => { b.style.transform = 'none'; });
+  }
+
+  function heroMockIntro() {
+    const el = $('.hero-visual');
+    const tl = gsap.timeline();
+    if (!el) return tl;
+    const chips = $$('.chip', el);
+    const bars = $$('.margin-bars i', el);
+    const count = $('.hm-count', el);
+    gsap.set(bars, { scaleY: 0 });
+    count.textContent = '0.0';
+    chips.forEach((c) => tl.add(() => c.classList.add('on'), '+=0.4'));
+    tl.to(bars, { scaleY: 1, duration: 0.9, stagger: 0.07, ease: 'power3.out' }, '+=0.3');
+    const o = { v: 0 };
+    tl.to(o, { v: 0.9, duration: 1.3, ease: 'power2.out', onUpdate: () => { count.textContent = o.v.toFixed(1); } }, '<+=0.2');
+    return tl;
+  }
+
+  function initHeroMockLoop() {
+    const el = $('.hero-visual');
+    if (!el) return;
+    const chips = $$('.chip', el);
+    const sale = $('.hm-sale', el), offer = $('.hm-offer', el);
+    const amt = $('.hm-amt', el), n = $('.hm-n', el), rate = $('.hm-rate', el), why = $('.hm-why', el);
+    const scenes = [
+      { n: '6',  amt: '$860',   rate: '3.4% a month', why: 'Safer offer for a new customer' },
+      { n: '12', amt: '$2,150', rate: '2.6% a month', why: 'Loyal customer, lower risk' },
+      { n: '10', amt: '$1,240', rate: '2.9% a month', why: 'Lowest rate that keeps the margin' }
+    ];
+    const tl = gsap.timeline({ repeat: -1, delay: 6.5, paused: true });
+    scenes.forEach((s) => {
+      tl.add(() => chips.forEach((c) => c.classList.remove('on')))
+        .to(sale, { opacity: 0, y: -6, duration: 0.25 }, '<')
+        .add(() => { amt.textContent = s.amt; n.textContent = s.n; })
+        .to(sale, { opacity: 1, y: 0, duration: 0.4 });
+      chips.forEach((c) => tl.add(() => c.classList.add('on'), '+=0.45'));
+      tl.to(offer, { opacity: 0, y: 6, duration: 0.25 }, '+=0.35')
+        .add(() => { rate.textContent = s.rate; why.textContent = s.why; })
+        .to(offer, { opacity: 1, y: 0, duration: 0.45 })
+        .to({}, { duration: 3.2 });
+    });
+    ScrollTrigger.create({
+      trigger: '.hero', start: 'top bottom', end: 'bottom top',
+      onToggle: (self) => { self.isActive ? tl.play() : tl.pause(); }
+    });
+    tl.play();
   }
 
   function initStages() {

@@ -146,3 +146,31 @@ and back every strong claim with a rule we follow.
   so credit and image live in one place. On mobile the caption stacks, logo below the text.
 - The About section now has two parallel moves: where the name comes from (the river) and where the team comes
   from (Boston).
+
+## 2026-11-03 · More visual: product in the hero, Bemol as anchor partner, UI strips in the cards
+
+- The founder compared the site with gothrust.com.br (five hero videos, AI-looking photos, video testimonials)
+  and nextautomation.us (one skyline video, then a large interactive product demo and client logos) and felt
+  ours lacked visuals. Diagnosis: not quantity of images but placement. Our first two screens were text on flat
+  backgrounds and the first visual (the mock UIs) only came in the fourth screen. Decision: show the product
+  early, no stock photos, no full-bleed video with an overlay (brand rule, and the most common AI-agency look).
+- Hero: two columns. Right side is a checkout mock of the credit pricing engine (`.hero-visual`, `.device-hero`)
+  with a "Live" tag. It enters after the headline (chips, margin bars, +0.9 pts count) and then cycles three
+  sales every few seconds ($860 at 3.4%, $2,150 at 2.6%, $1,240 at 2.9%), paused when the hero is off screen.
+  Title size reduced to clamp(44px, 5.9vw, 86px) so "AI that shows up" fits the left column at 1440.
+- Anchor partner band under the hero (`.partner`): "Anchor partner", the Bemol logo (`assets/brand/bemol-logo.svg`,
+  their own colors, from bemol.com.br) linking to https://www.bemol.com.br, and the sentence "Bemol is one of the
+  largest retailers in northern Brazil, and the operation where our solutions prove themselves first." The
+  founder authorized naming Bemol today; the +1% number still waits for Denis.
+- Lever cards: a strip of product UI cropped by the card's bottom edge (`.lever-shot`). Revenue card: a WhatsApp
+  sale (customer asks about a TV, agent holds one and sets up installments, "Sold at 9:44 pm · $499") on navy.
+  Cost card: accounts payable rows with Posted / Sent to legal pills and "214 documents today · 3 needed a
+  person" on ivory. Replies and pills animate in when the card gets `is-in` (same trigger as the bento cards).
+- Customer service demo now lives in a phone frame (`.device-phone`: 8px navy bezel, status bar, "Store support ·
+  online" header), so it reads as a product, not an illustration.
+- Babson lead: "Founded by a team of students from Babson College, with roots in Brazil." (founder's wording).
+- Bug found while testing: the 4.5s no-frames fallback fired in a background tab (no requestAnimationFrame),
+  cleared the preloader timeline and left Lenis stopped, so the page could not scroll. It now waits while the
+  document is hidden and restarts Lenis if it does fire. It also keeps the `--h` inline style on `.margin-bars i`.
+- Checked in Chrome at 1440×800 (hero loop, partner band, strips, phone, no console errors) and at 390px in
+  headless Chrome (iframe trick) for the hero, band and lever cards.

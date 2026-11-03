@@ -93,16 +93,24 @@ CDN scripts (pinned versions, loaded with `defer`): GSAP 3.12.5, ScrollTrigger 3
 1. **Preloader**: symbol draws itself (ring, then T, then dot). Once per session (`sessionStorage 'tamba-seen'`).
 2. **Nav**: fixed, glass when scrolled, hides on scroll down, shows on scroll up. Swaps light and dark logo by
    reading the `data-theme` of the section under it. Mobile: burger with full-screen menu.
-3. **Hero** (navy): line-mask headline reveal, arc draws in, content fades and lifts on scroll.
+3. **Hero** (navy): two columns. Left, line-mask headline reveal; right, the product (`.hero-visual`): a compact
+   checkout mock of the credit pricing engine that cycles through three sales (amount, chips, rate) every few
+   seconds (`initHeroMockLoop`), paused off screen. The arc draws in behind the card. Content fades and lifts
+   on scroll. On mobile the card sits under the buttons.
+3b. **Anchor partner** band (ivory, `.partner`): overline "Anchor partner", the Bemol logo linking to
+   bemol.com.br, one sentence. Room for more logos later.
 4. **Statement** (ivory): words light up one by one with scroll (`[data-words]`). "Every project we take on has
    one job: more revenue or less cost."
 5. **Solutions** `#solutions`: "Two ways it pays for itself." Two lever cards (`.levers`): More revenue (light)
-   and Lower cost (navy), each with 4 product lines and a link to the form that preselects the interest.
+   and Lower cost (navy), each with 4 product lines, a link to the form that preselects the interest, and a strip
+   of product UI cropped by the card's bottom edge (`.lever-shot`: a WhatsApp sale on the revenue card, an
+   accounts payable list on the cost card; their replies and status pills appear when the card scrolls in).
    Below, "How we deliver": bento with 3 equal cards (Implementation, Proven solutions, Incubation).
 6. **In practice** `#practice` (navy): 4 auto-playing tabs with mock UIs, each labeled with its lever:
    Revenue · Pricing (credit rate at checkout, net margin +0.9 pts), Cost · Customer service ($3.80 instead of $11),
    Cost · Back office (61 hours back this week), Cost · Forecasting ($18,400 not overbought).
-   8 seconds each, progress bar, pause when off screen. Labeled "Illustrative examples."
+   8 seconds each, progress bar, pause when off screen. Labeled "Illustrative examples." The customer service demo
+   sits in a phone frame (`.device-phone`); the others in an app window with the three-dot bar.
    Counters: `.count` with `data-to`, optional `data-dec` (decimals) and `data-money` (thousands separators).
 7. **How we work** `#process`: pinned on desktop. Steps: Find the money, Adapt, Prove it, Spread it. The orbit fills
    with scroll, the dot rides the tip, number 01 to 04. Only the active step shows its description (accordion).
@@ -145,6 +153,9 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 "$C" --headless=new --disable-gpu --hide-scrollbars --force-prefers-reduced-motion \
      --window-size=1440,900 --virtual-time-budget=8000 --screenshot=out.png http://localhost:8765/
 ```
+- The 4.5s no-frames fallback in `main.js` waits while `document.hidden` is true (a tab opened in the background
+  gets no animation frames) and restarts Lenis when it does fire. Before 2026-11-03 it killed the preloader
+  timeline in background tabs and left Lenis stopped, so the page could not scroll.
 - Headless Chrome on this setup does **not** run requestAnimationFrame, so GSAP animations do not play there.
   Use `--force-prefers-reduced-motion` to check static layout. Animations must be checked in a real browser.
 - Headless has a minimum window width of about 500px. To test 390px mobile, load the page inside a
@@ -155,30 +166,32 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ## Decisions confirmed by the founders
 
 - Contact email: **info@tambatech.ai**
-- Line approved: "Founded in Boston by a team from Babson College, with roots in Brazil."
-- That line is the lead of the "Built in Boston." block that closes the About section (`.campus-head`, overline
-  "Where the team comes from", shortened to "Founded by a team from Babson College, with roots in Brazil." since
-  "Built in Boston." already says where). Below it, the only photograph on the site: an aerial of the Babson campus
+- Babson line (founder's wording, 2026-11-03): "Founded by a team of students from Babson College, with roots in
+  Brazil." It is the lead of the "Built in Boston." block that closes the About section (`.campus-head`, overline
+  "Where the team comes from"). Below it, the only photograph on the site: an aerial of the Babson campus
   in autumn (`assets/brand/babson-campus.webp` with `.jpg` fallback, from `Brand/header-grad-cunef-1920x548.jpg`).
   Rounded like the cards, no text or overlay on it. The caption row holds "Babson College, Wellesley,
   Massachusetts." on the left and the Babson horizontal logo on the right (`assets/brand/babson-college-logo.svg`,
   a copy of `Brand/Logo-Babson-College-Horizontal-RGB_(2).svg` with the Inkscape metadata stripped, original
   Babson green #006644, never recolored or distorted). One photo per site. Do not add others or reuse it
   elsewhere. Photo and logo belong to Babson: same permission conversation. (The seal was used until 2026-11-03.)
+- **Bemol can be named** (founder's decision, 2026-11-03): it is the anchor partner, logo in the band under the
+  hero linking to https://www.bemol.com.br. `assets/brand/bemol-logo.svg` is Bemol's own logo (blue #0196D7 and
+  red #EE3C34, from bemol.com.br), never recolored. Sentence on the site: "Bemol is one of the largest retailers
+  in northern Brazil, and the operation where our solutions prove themselves first." No numbers yet.
+- Visual direction (2026-11-03, after comparing with gothrust.com.br and nextautomation.us): the site shows the
+  product, not stock photos or full-bleed video. Visual proof goes in the first two screens (hero mock, partner
+  band, lever strips). No photos of people from image banks. A real founders photo is welcome when they take one.
 - Domain intended: tambatech.ai
 
 ## Open items (ask before publishing)
 
 - Mock UI numbers ("38 seconds", "$3.80 instead of $11", "61 hours", "$18,400", "+0.9 pts", etc.) are
   illustrative. Replace them if real results exist.
-- **Proof band under the hero** (pending): "+1% net profit in one year. A credit pricing engine we run at one of the
-  largest retailers in northern Brazil." Needs Denis to release the number and say whether the client can be named.
-  Not on the site. Until then the hero stays as is; if the founders prefer a softer title without proof, the
-  fallback is "We put money back in your business."
+- **The "+1% net profit in one year" number** (pending): needs Denis to release it. When he does, it goes into the
+  anchor partner band ("+1% net profit in one year with our credit pricing engine") or a proof line under the hero.
 - **Commercial guarantee** (pending): "If the pilot doesn't move the number we agreed on, you don't pay to scale it."
   Changes the billing model. Decide with Daniel before adding it to the process section.
-- **Do not name the client company yet** (founder's instruction, 2026-11-02). Products from that operation can be
-  described, the name cannot.
 - "A partner replies within two business days." Not yet confirmed.
 - The form opens the visitor's email app (mailto). Consider Formspree or similar to receive submissions directly.
 - Confirm Babson allows its seal on the site (institutional seals often need approval; the Babson brand

@@ -75,22 +75,60 @@
         <circle class="hero-arc-dot" cx="51.1" cy="51.1" r="0.62" fill="#C9A24B"/>
       </svg>
 
-      <div class="container hero-content">
-        <p class="overline hero-over"><span>Applied AI hub</span><i class="dot"></i><span>US and Brazil</span></p>
-        <h1 class="display hero-title">
-          <span class="line"><span>AI that shows up</span></span>
-          <span class="line"><span>on your P&amp;L.</span></span>
-        </h1>
-        <p class="lead hero-lead">Every project we run has to raise revenue or cut cost. If we can't point to the number, we don't start.</p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-gold">Talk to us</a>
-          <a href="#solutions" class="btn btn-ghost">See what we do</a>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="overline hero-over"><span>Applied AI hub</span><i class="dot"></i><span>US and Brazil</span></p>
+          <h1 class="display hero-title">
+            <span class="line"><span>AI that shows up</span></span>
+            <span class="line"><span>on your P&amp;L.</span></span>
+          </h1>
+          <p class="lead hero-lead">Every project we run has to raise revenue or cut cost. If we can't point to the number, we don't start.</p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-gold">Talk to us</a>
+            <a href="#solutions" class="btn btn-ghost">See what we do</a>
+          </div>
+        </div>
+
+        <!-- Product in the first screen: the credit pricing engine, cycling through sales -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="device device-hero">
+            <div class="device-bar"><span></span><span></span><span></span><em>Checkout · Store 14</em><i class="live">Live</i></div>
+            <div class="price">
+              <div class="sale hm-sale"><span>Sale in <b class="hm-n">10</b> installments</span><strong class="hm-amt">$1,240</strong></div>
+              <div class="steps steps-left">
+                <span class="chip">Reads history</span>
+                <span class="chip">Scores risk</span>
+                <span class="chip">Sets the rate</span>
+              </div>
+              <div class="offer hm-offer">
+                <div><strong class="hm-rate">2.9% a month</strong><em class="hm-why">Lowest rate that keeps the margin</em></div>
+                <b>Approved</b>
+              </div>
+              <div class="margin">
+                <div class="margin-bars">
+                  <i style="--h:34%"></i><i style="--h:40%"></i><i style="--h:38%"></i><i style="--h:52%"></i><i style="--h:58%"></i><i style="--h:66%"></i><i style="--h:78%"></i><i style="--h:100%"></i>
+                </div>
+                <p class="margin-note"><span>Net margin since launch</span><strong>+<b class="count hm-count" data-to="0.9" data-dec="1">0.9</b> pts</strong></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <a href="#statement" class="scroll-cue" aria-label="Scroll down">
         <span></span>
       </a>
+    </section>
+
+    <!-- ANCHOR PARTNER -->
+    <section class="partner theme-light" data-theme="light" aria-label="Anchor partner">
+      <div class="container partner-row">
+        <p class="overline gold-text">Anchor partner</p>
+        <a href="https://www.bemol.com.br" target="_blank" rel="noopener" class="partner-logo" title="bemol.com.br">
+          <img src="assets/brand/bemol-logo.svg" alt="Bemol" width="118" height="64" loading="lazy">
+        </a>
+        <p class="partner-text">Bemol is one of the largest retailers in northern Brazil, and the operation where our solutions prove themselves first. <a href="https://www.bemol.com.br" target="_blank" rel="noopener">bemol.com.br</a></p>
+      </div>
     </section>
 
     <!-- STATEMENT: words light up as you scroll -->
@@ -123,6 +161,12 @@
               <li><i class="dot"></i>A WhatsApp agent that sells after hours</li>
             </ul>
             <a href="#contact" class="lever-link" data-interest="More revenue">Start with revenue</a>
+            <div class="lever-shot shot-dark" aria-hidden="true">
+              <div class="shot-bar"><em>WhatsApp · Sales</em><span>Sat 9:42 pm</span></div>
+              <div class="msg msg-in">Is the 55-inch TV still on sale? Can I pay in 10?</div>
+              <div class="msg msg-out">Yes, $499 until Sunday. I can hold one at the Centro store and set up 10 installments. Shall I?</div>
+              <div class="shot-foot"><i class="dot"></i><span>Sold at 9:44 pm</span><span class="sep">·</span><span>$499</span></div>
+            </div>
           </article>
           <article class="lever lever-dark reveal">
             <p class="card-kicker"><i class="dot"></i>Lever two</p>
@@ -135,6 +179,13 @@
               <li><i class="dot"></i>Collections that reach the right people first</li>
             </ul>
             <a href="#contact" class="lever-link" data-interest="Lower cost">Start with cost</a>
+            <div class="lever-shot shot-light" aria-hidden="true">
+              <div class="shot-bar"><em>Accounts payable</em><span>Today</span></div>
+              <div class="shot-row"><span>Invoice 10294 · Northline Supply</span><b class="ok">Posted</b></div>
+              <div class="shot-row"><span>Invoice 10295 · Atlas Freight</span><b class="ok">Posted</b></div>
+              <div class="shot-row"><span>Contract renewal · Vale Foods</span><b class="flag">Sent to legal</b></div>
+              <div class="shot-foot"><i class="dot"></i><span>214 documents today</span><span class="sep">·</span><span>3 needed a person</span></div>
+            </div>
           </article>
         </div>
 
@@ -253,8 +304,9 @@
               <h3>Answers in seconds. People for what matters.</h3>
               <p>Requests come in by message. The system reads them, checks your order and billing systems and replies. Anything sensitive goes straight to your team, with the full context.</p>
             </div>
-            <div class="device">
-              <div class="device-bar"><span></span><span></span><span></span><em>Support inbox</em></div>
+            <div class="device device-phone">
+              <div class="phone-top"><span>9:41</span><i></i></div>
+              <div class="phone-head"><b>S</b><div><strong>Store support</strong><em>online</em></div></div>
               <div class="chat">
                 <div class="msg msg-in" data-step>Hi, my order 4821 hasn't arrived yet. Can you check?</div>
                 <div class="steps" data-step>
@@ -487,7 +539,7 @@
         <div class="campus-head">
           <p class="overline gold-text reveal">Where the team comes from</p>
           <h2 class="title reveal">Built in Boston.</h2>
-          <p class="lead muted reveal">Founded by a team from Babson College, with roots in Brazil.</p>
+          <p class="lead muted reveal">Founded by a team of students from Babson College, with roots in Brazil.</p>
         </div>
         <figure class="campus reveal">
           <picture>

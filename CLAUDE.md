@@ -88,6 +88,7 @@ assets/css/style.css    all styles, tokens on :root, responsive at 1020px and 64
 assets/js/main.js       all interactions (one IIFE)
 assets/js/i18n.js       Spanish and Portuguese dictionaries, language detection and the switcher
 assets/brand/           logos and favicons used by the site
+assets/media/           the river video (river.webm, river.mp4, poster) and, temporarily, the other candidate (river-a.*)
 Brand/                  source brand kit (manual PDF, brand thesis PDF, logo exploration). Do not edit.
 docs/HISTORY.md         change log and decisions
 ```
@@ -121,8 +122,9 @@ CDN scripts (pinned versions, loaded with `defer`): GSAP 3.12.5, ScrollTrigger 3
    with scroll, the dot rides the tip, number 01 to 04. Only the active step shows its description (accordion).
 8. **Principles**: 4 columns (Production first, Paid back, Your data stays yours, Two markets).
 9. **Incubation** `#incubation` (navy): symbol explained (T, ring, dot), symbol draws on enter.
-10. **Origin / About** `#about`: "Adapt. Transform. Scale." slide in; tambaqui story; 4 trait cards
-    (Adapt, Transform, Spread, Connect) each with "In the river" / "In our work"; "Tamba is not the product."
+10. **Origin / About** `#about`: "Adapt. Transform. Scale." slide in; tambaqui story; the river video (`.river`,
+    muted loop, loads when within 600px, plays only while 20% visible, poster only under reduced motion); 4 trait
+    cards (Adapt, Transform, Spread, Connect) each with "In the river" / "In our work"; "Tamba is not the product."
 11. **Contact** `#contact` (navy): "Let's find the money in your operation." Interest pills: More revenue,
     Lower cost, Incubation. Question: "Where is your operation losing money today?" The form composes a
     `mailto:` to `CONTACT_EMAIL` in `main.js`.
@@ -182,8 +184,18 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   Rounded like the cards, no text or overlay on it. The caption row holds "Babson College, Wellesley,
   Massachusetts." on the left and the Babson horizontal logo on the right (`assets/brand/babson-college-logo.svg`,
   a copy of `Brand/Logo-Babson-College-Horizontal-RGB_(2).svg` with the Inkscape metadata stripped, original
-  Babson green #006644, never recolored or distorted). One photo per site. Do not add others or reuse it
-  elsewhere. Photo and logo belong to Babson: same permission conversation. (The seal was used until 2026-11-03.)
+  Babson green #006644, never recolored or distorted). One photo and one video per site: the campus (where the
+  team comes from) and the river (where the name comes from), both in About. Do not add others or reuse them
+  elsewhere. Photo and logo belong to Babson: same permission conversation.
+- **River video** (2026-11-03): a Pexels drone clip chosen by the founder (source files in `Brand/videos/`, git
+  ignored, 4K 60fps). `assets/media/river.webm` (VP9, 1280×720, 3 Mbps, 8 s, 3.2 MB) with `river.mp4` (H.264,
+  2.7 MB) as fallback, poster `river-poster.webp`. No fish on screen (brand rule), no text over the video.
+  Caption: "A river in the Amazon. It rises and falls by meters every year." Location unknown, so the caption
+  does not name a river. Making the files: this Mac has no ffmpeg; `avconvert` (macOS) downscales to 720p
+  (`--preset Preset1280x720`, also `--start/--duration` to trim) but cannot set a bitrate, so the final encode was
+  done in Chrome with a canvas + MediaRecorder page posting the blob to a tiny local Python server (see
+  docs/HISTORY.md, 2026-11-03). `?clip=a` swaps in the second candidate (`river-a.*`); remove it, and the
+  river-a files, once the founder picks. (The seal was used until 2026-11-03.)
 - **Bemol is not on the site until there is an official OK** (founder, 2026-11-03, after a few hours with an
   "Anchor partner" band under the hero). When the OK comes, rebuild the band from the 2026-11-03 entry in
   `docs/HISTORY.md` (logo from bemol.com.br in its own colors, link to https://www.bemol.com.br) and add ES/PT

@@ -192,3 +192,24 @@ and back every strong claim with a rule we follow.
 - Chrome auto-translated the Spanish page into Portuguese on the founder's pt-BR browser, switcher labels
   included ("EM É PT"). Added `<meta name="google" content="notranslate">`.
 - Checked in Chrome at 1440×800 in ES and PT: hero, statement, levers, process, contact, no console errors.
+
+## 2026-11-03 · The river: one video in the origin section
+
+- Where: the founder asked whether a video fits the tambaqui part. Yes: it is the heaviest text block, it is
+  story rather than product (so a real place is allowed, like the campus photo), and it gives each origin block
+  one image: river for the name, campus for the team. No fish on screen (brand rule), no full-bleed video with
+  text over it. I shortlisted Pexels clips; the founder then dropped two Pexels 4K 60fps clips in
+  `Brand/videos/` (13455995, 4 s, low angle on a river; 15165561, 8 s, drone over a river with a canoe).
+- Build: `<figure class="river">` between the tambaqui story and the trait cards. `<video muted loop playsinline
+  preload="none">` with `data-src` sources; `initRiver()` loads the sources when the video is within 600px and
+  plays only while 20% visible (IntersectionObserver, works with or without GSAP); under reduced motion only
+  the poster shows. Rounded like the cards, caption below: "A river in the Amazon. It rises and falls by meters
+  every year." ES and PT entries added.
+- Encoding without ffmpeg: `avconvert --preset Preset1280x720` gives H.264 at 60 Mbps (30 MB for 4 s), the Apple
+  M4V presets give either 9 Mbps or 480p. So: a throwaway page (`_rec.html`) played the 720p file into a canvas
+  and recorded it with MediaRecorder (VP9 WebM and H.264 MP4 at 3 Mbps, 30 fps), posting the blob to a small
+  Python receiver on port 8766. Results: river.webm 3.2 MB, river.mp4 2.7 MB (clip B); river-a.webm 5.4 MB,
+  river-a.mp4 6.8 MB (clip A, more water detail). Posters via `qlmanage -t`, then Pillow to WebP.
+- Clip B (drone, 8 s) is live by default; `?clip=a` shows clip A so the founder can compare in place. Raw videos
+  are git ignored (`Brand/videos/`, 235 MB).
+- Checked in Chrome at 1440×800: loads lazily, plays in view, pauses out of view, no console errors.

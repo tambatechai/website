@@ -221,6 +221,8 @@ window.TambaI18n = (() => {
     "Where is your operation losing money today?": "¿Dónde está perdiendo dinero tu operación hoy?",
     "Send message": "Enviar mensaje",
     "Adapt. Transform. Scale.": "Adaptar. Transformar. Escalar.",
+    "A river in the Amazon. It rises and falls by meters every year.": "Un río en el Amazonas. Sube y baja varios metros cada año.",
+    "A river in the Amazon seen from above": "Un río en el Amazonas visto desde arriba",
     /* strings used from main.js */
     "Safer offer for a new customer": "Oferta más segura para un cliente nuevo",
     "Loyal customer, lower risk": "Cliente fiel, menos riesgo",
@@ -433,6 +435,8 @@ window.TambaI18n = (() => {
     "Where is your operation losing money today?": "Onde a sua operação está perdendo dinheiro hoje?",
     "Send message": "Enviar mensagem",
     "Adapt. Transform. Scale.": "Adaptar. Transformar. Escalar.",
+    "A river in the Amazon. It rises and falls by meters every year.": "Um rio na Amazônia. Sobe e desce metros todo ano.",
+    "A river in the Amazon seen from above": "Um rio na Amazônia visto de cima",
     /* strings used from main.js */
     "Safer offer for a new customer": "Oferta mais segura para um cliente novo",
     "Loyal customer, lower risk": "Cliente fiel, menos risco",

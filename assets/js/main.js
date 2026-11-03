@@ -33,6 +33,7 @@
     initTabs(null);
     initForm();
     staticHero();
+    initRiver();
     return;
   }
 
@@ -70,6 +71,7 @@
   initNav(lenis);
   initMenu(lenis);
   initForm();
+  if (!reduce) initRiver();
 
   /* ---------- Preloader, then hero entrance ---------- */
   const heroArc = $('.hero-arc-path');
@@ -273,6 +275,34 @@
       onToggle: (self) => { self.isActive ? tl.play() : tl.pause(); }
     });
     tl.play();
+  }
+
+  /* ---------- River video: load when near, play only while in view ---------- */
+  function initRiver() {
+    const fig = $('.river');
+    const vid = fig && $('video', fig);
+    if (!vid || !('IntersectionObserver' in window)) return;
+    // Temporary: ?clip=a shows the other candidate for comparison.
+    if (new URLSearchParams(location.search).get('clip') === 'a') {
+      $$('source', vid).forEach((s) => { s.dataset.src = s.dataset.src.replace('river.', 'river-a.'); });
+      vid.poster = 'assets/media/river-a-poster.webp';
+    }
+    let loaded = false;
+    const load = () => {
+      if (loaded) return;
+      loaded = true;
+      $$('source', vid).forEach((s) => { s.src = s.dataset.src; });
+      vid.load();
+    };
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) load(); });
+    }, { rootMargin: '600px 0px' }).observe(vid);
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { load(); const p = vid.play(); if (p && p.catch) p.catch(() => {}); }
+        else vid.pause();
+      });
+    }, { threshold: 0.2 }).observe(vid);
   }
 
   function initStages() {

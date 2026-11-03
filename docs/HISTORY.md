@@ -136,3 +136,13 @@ and back every strong claim with a rule we follow.
 - No text or overlay on the photo (brand rule: no gradients). Crop centered on the cupola (`object-position`).
 - Exports: `assets/brand/babson-campus.webp` (244 KB, q78) with a progressive JPG fallback, lazy loaded.
 - Open: the photo is Babson's. Ask for permission together with the logo.
+
+## 2026-11-03 · "Built in Boston." head for the campus photo
+
+- The founder liked the photo but found it floating, with no introduction. Fix: a head in the site's standard
+  pattern above it (overline "Where the team comes from", title "Built in Boston.", lead "Founded by a team from
+  Babson College, with roots in Brazil."), separated from the name story by a hairline across the container.
+- The old `.founded` block is gone. The Babson logo moved to the right end of the caption row under the photo,
+  so credit and image live in one place. On mobile the caption stacks, logo below the text.
+- The About section now has two parallel moves: where the name comes from (the river) and where the team comes
+  from (Boston).

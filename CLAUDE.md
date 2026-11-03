@@ -156,15 +156,15 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 - Contact email: **info@tambatech.ai**
 - Line approved: "Founded in Boston by a team from Babson College, with roots in Brazil."
-- That line shows the Babson College horizontal logo next to it (`.founded` block in the About section). Asset:
-  `assets/brand/babson-college-logo.svg`, a copy of `Brand/Logo-Babson-College-Horizontal-RGB_(2).svg` with the
-  Inkscape metadata stripped. Keep its original Babson green (#006644). Never recolor or distort it.
-  Use it only next to the Babson mention, not as decoration elsewhere. (The seal was used until 2026-11-03.)
-- Above that credit sits the only photograph on the site: an aerial of the Babson campus in autumn
-  (`assets/brand/babson-campus.webp` with `.jpg` fallback, from `Brand/header-grad-cunef-1920x548.jpg`).
-  Rounded like the cards, no text or overlay on it, caption "Babson College, Wellesley, Massachusetts."
-  One photo per site. Do not add others or reuse it elsewhere. The image belongs to Babson: same permission
-  conversation as the logo.
+- That line is the lead of the "Built in Boston." block that closes the About section (`.campus-head`, overline
+  "Where the team comes from", shortened to "Founded by a team from Babson College, with roots in Brazil." since
+  "Built in Boston." already says where). Below it, the only photograph on the site: an aerial of the Babson campus
+  in autumn (`assets/brand/babson-campus.webp` with `.jpg` fallback, from `Brand/header-grad-cunef-1920x548.jpg`).
+  Rounded like the cards, no text or overlay on it. The caption row holds "Babson College, Wellesley,
+  Massachusetts." on the left and the Babson horizontal logo on the right (`assets/brand/babson-college-logo.svg`,
+  a copy of `Brand/Logo-Babson-College-Horizontal-RGB_(2).svg` with the Inkscape metadata stripped, original
+  Babson green #006644, never recolored or distorted). One photo per site. Do not add others or reuse it
+  elsewhere. Photo and logo belong to Babson: same permission conversation. (The seal was used until 2026-11-03.)
 - Domain intended: tambatech.ai
 
 ## Open items (ask before publishing)

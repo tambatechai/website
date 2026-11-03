@@ -757,10 +757,17 @@ html:not(.js) .preloader { display: none; }
   .js .p-step p { max-height: none; opacity: 1; }
 }
 
-/* ---------- Babson credit (origin section) ---------- */
+/* ---------- Babson campus photo and credit (origin section) ---------- */
+.campus { margin: clamp(64px, 9vw, 120px) 0 0; }
+.campus img {
+  width: 100%; height: clamp(220px, 28vw, 420px);
+  object-fit: cover; object-position: 55% 45%;
+  border-radius: var(--radius);
+}
+.campus figcaption { margin: 14px 0 0; font-size: 13px; color: var(--slate); }
 .founded {
   display: flex; align-items: center; gap: 28px;
-  margin-top: 36px; padding-top: 28px;
+  margin-top: 28px; padding-top: 28px;
   border-top: 1px solid var(--line-light);
 }
 .founded img { width: 220px; height: auto; flex: none; }

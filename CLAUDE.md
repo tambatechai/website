@@ -160,6 +160,11 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   `assets/brand/babson-college-logo.svg`, a copy of `Brand/Logo-Babson-College-Horizontal-RGB_(2).svg` with the
   Inkscape metadata stripped. Keep its original Babson green (#006644). Never recolor or distort it.
   Use it only next to the Babson mention, not as decoration elsewhere. (The seal was used until 2026-11-03.)
+- Above that credit sits the only photograph on the site: an aerial of the Babson campus in autumn
+  (`assets/brand/babson-campus.webp` with `.jpg` fallback, from `Brand/header-grad-cunef-1920x548.jpg`).
+  Rounded like the cards, no text or overlay on it, caption "Babson College, Wellesley, Massachusetts."
+  One photo per site. Do not add others or reuse it elsewhere. The image belongs to Babson: same permission
+  conversation as the logo.
 - Domain intended: tambatech.ai
 
 ## Open items (ask before publishing)

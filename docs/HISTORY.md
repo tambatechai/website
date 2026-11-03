@@ -127,3 +127,12 @@ and back every strong claim with a rule we follow.
 ## 2026-11-03 · Solutions headline
 
 - "Two ways we pay for ourselves." became "Two ways it pays for itself." (a co-founder's wording, approved by Lucas).
+
+## 2026-11-03 · Campus photo in the origin section
+
+- The founder brought `Brand/header-grad-cunef-1920x548.jpg`, an aerial of the Babson campus, and asked whether
+  it would work near the Babson credit. Yes, as the single photograph on the site: a wide rounded figure after
+  the "Tamba is not the product" block, caption below, then the logo and the "Founded in Boston" line.
+- No text or overlay on the photo (brand rule: no gradients). Crop centered on the cupola (`object-position`).
+- Exports: `assets/brand/babson-campus.webp` (244 KB, q78) with a progressive JPG fallback, lazy loaded.
+- Open: the photo is Babson's. Ask for permission together with the logo.

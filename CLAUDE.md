@@ -156,10 +156,10 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 - Contact email: **info@tambatech.ai**
 - Line approved: "Founded in Boston by a team from Babson College, with roots in Brazil."
-- That line shows the Babson College seal next to it (`.founded` block in the About section). Asset:
-  `assets/brand/babson-college-seal.svg`, a copy of `Brand/Babson_College_seal.svg` with a viewBox added
-  (`4 4 212 212`) so it scales. Keep the seal's original one color (#231f20). Never recolor or distort it.
-  Use it only next to the Babson mention, not as decoration elsewhere.
+- That line shows the Babson College horizontal logo next to it (`.founded` block in the About section). Asset:
+  `assets/brand/babson-college-logo.svg`, a copy of `Brand/Logo-Babson-College-Horizontal-RGB_(2).svg` with the
+  Inkscape metadata stripped. Keep its original Babson green (#006644). Never recolor or distort it.
+  Use it only next to the Babson mention, not as decoration elsewhere. (The seal was used until 2026-11-03.)
 - Domain intended: tambatech.ai
 
 ## Open items (ask before publishing)

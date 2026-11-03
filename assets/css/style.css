@@ -759,14 +759,15 @@ html:not(.js) .preloader { display: none; }
 
 /* ---------- Babson credit (origin section) ---------- */
 .founded {
-  display: flex; align-items: center; gap: 20px;
+  display: flex; align-items: center; gap: 28px;
   margin-top: 36px; padding-top: 28px;
   border-top: 1px solid var(--line-light);
 }
-.founded img { width: 72px; height: 72px; flex: none; }
-.founded p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--slate); max-width: 26em; }
+.founded img { width: 220px; height: auto; flex: none; }
+.founded p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--slate); max-width: 26em; padding-left: 28px; border-left: 1px solid var(--line-light); }
 .founded strong { font-weight: 600; color: var(--navy); }
 @media (max-width: 640px) {
-  .founded { gap: 16px; }
-  .founded img { width: 60px; height: 60px; }
+  .founded { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .founded img { width: 180px; }
+  .founded p { padding-left: 0; border-left: 0; }
 }

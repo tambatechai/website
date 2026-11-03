@@ -115,3 +115,11 @@ and back every strong claim with a rule we follow.
 - Left out on purpose: the "+1% net profit" proof band (needs the client's OK on the number and on being named)
   and the commercial guarantee (billing model decision). The client is not named anywhere.
 - Checked in Chrome at 1440×800 and 500px wide: no console errors, all four demos animate, process pin fits.
+
+## 2026-11-03 · Babson logo instead of the seal
+
+- The founder added `Brand/Logo-Babson-College-Horizontal-RGB_(2).svg` and asked to use it in place of the seal.
+- `assets/brand/babson-college-logo.svg` is a copy with the Inkscape and sodipodi metadata removed, color kept
+  (Babson green #006644). The seal asset was deleted from `assets/brand/`; the source stays in `Brand/`.
+- `.founded` block: 220px wide logo, vertical hairline, then the "Founded in Boston..." line. On mobile the logo
+  (180px) sits above the text. Checked at 1440×800.

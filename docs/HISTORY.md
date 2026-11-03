@@ -174,3 +174,21 @@ and back every strong claim with a rule we follow.
   document is hidden and restarts Lenis if it does fire. It also keeps the `--h` inline style on `.margin-bars i`.
 - Checked in Chrome at 1440×800 (hero loop, partner band, strips, phone, no console errors) and at 390px in
   headless Chrome (iframe trick) for the hero, band and lever cards.
+
+## 2026-11-03 · Bemol off again, three languages
+
+- Bemol taken off the site a few hours after going up: the founder wants an official OK first. The band, its
+  CSS and `assets/brand/bemol-logo.svg` are gone (the repo is public). To bring it back: section `.partner`
+  between the hero and the statement, overline "Anchor partner", logo linking to bemol.com.br, sentence
+  "Bemol is one of the largest retailers in northern Brazil, and the operation where our solutions prove
+  themselves first." The commit before this one (444a5de) has the full markup and styles.
+- EN · ES · PT switcher in the nav, English by default. Implementation: `assets/js/i18n.js` holds two
+  dictionaries keyed by the English string; a tree walker swaps every matching text node before `main.js`
+  animates anything. Attributes (`alt`, `aria-label`), `<title>`, meta description and `html lang` follow. The
+  choice is saved in `localStorage` and the page reloads with `?lang=`, which keeps every animation path
+  untouched. Strings built in JS (hero mock scenes, menu labels, form notes) go through `t()`.
+- Translation choices: PT uses "DRE" for P&L ("IA que aparece no seu DRE."), ES keeps "P&L". Spanish uses
+  "tú". Brand words translate ("Adaptar. Transformar. Escalar."). Currency stays in dollars (illustrative).
+- Chrome auto-translated the Spanish page into Portuguese on the founder's pt-BR browser, switcher labels
+  included ("EM É PT"). Added `<meta name="google" content="notranslate">`.
+- Checked in Chrome at 1440×800 in ES and PT: hero, statement, levers, process, contact, no console errors.

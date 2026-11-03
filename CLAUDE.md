@@ -18,7 +18,12 @@ reveals, glass nav, animated mock interfaces instead of stock photos).
 
 ## Copy rules (non-negotiable)
 
-- English only on the site.
+- **English is the source** and lives in `index.html`. Spanish and Portuguese come from `assets/js/i18n.js`:
+  two dictionaries keyed by the exact English string (whitespace collapsed). Every text node whose text matches a
+  key is swapped before the animations start; strings built in `main.js` go through `t()`. Default is English;
+  the EN · ES · PT switcher in the nav saves the choice in `localStorage` (`tamba-lang`) and reloads with
+  `?lang=es` or `?lang=pt`. **Every new or changed string needs its ES and PT entries**, or it stays in English.
+  The copy rules below apply to all three languages. PT says "DRE" for P&L; ES keeps "P&L".
 - **No em dashes or en dashes** (— –) anywhere: not in copy, comments, or meta tags. Use periods, commas or a middle dot (·).
 - **Must not read as AI-written.** Banned words: seamless, cutting-edge, leverage, unlock, empower, revolutionize,
   disruptive, end-to-end, game-changing, harness, journey, landscape, robust, elevate, supercharge, innovative,
@@ -81,6 +86,7 @@ follow, never a loose promise.
 index.html              the whole page
 assets/css/style.css    all styles, tokens on :root, responsive at 1020px and 640px
 assets/js/main.js       all interactions (one IIFE)
+assets/js/i18n.js       Spanish and Portuguese dictionaries, language detection and the switcher
 assets/brand/           logos and favicons used by the site
 Brand/                  source brand kit (manual PDF, brand thesis PDF, logo exploration). Do not edit.
 docs/HISTORY.md         change log and decisions
@@ -92,13 +98,12 @@ CDN scripts (pinned versions, loaded with `defer`): GSAP 3.12.5, ScrollTrigger 3
 
 1. **Preloader**: symbol draws itself (ring, then T, then dot). Once per session (`sessionStorage 'tamba-seen'`).
 2. **Nav**: fixed, glass when scrolled, hides on scroll down, shows on scroll up. Swaps light and dark logo by
-   reading the `data-theme` of the section under it. Mobile: burger with full-screen menu.
+   reading the `data-theme` of the section under it. EN · ES · PT switcher before the CTA (stays visible on
+   mobile, next to the burger). Mobile: burger with full-screen menu.
 3. **Hero** (navy): two columns. Left, line-mask headline reveal; right, the product (`.hero-visual`): a compact
    checkout mock of the credit pricing engine that cycles through three sales (amount, chips, rate) every few
    seconds (`initHeroMockLoop`), paused off screen. The arc draws in behind the card. Content fades and lifts
    on scroll. On mobile the card sits under the buttons.
-3b. **Anchor partner** band (ivory, `.partner`): overline "Anchor partner", the Bemol logo linking to
-   bemol.com.br, one sentence. Room for more logos later.
 4. **Statement** (ivory): words light up one by one with scroll (`[data-words]`). "Every project we take on has
    one job: more revenue or less cost."
 5. **Solutions** `#solutions`: "Two ways it pays for itself." Two lever cards (`.levers`): More revenue (light)
@@ -153,6 +158,10 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 "$C" --headless=new --disable-gpu --hide-scrollbars --force-prefers-reduced-motion \
      --window-size=1440,900 --virtual-time-budget=8000 --screenshot=out.png http://localhost:8765/
 ```
+- `<meta name="google" content="notranslate">` stops Chrome from auto-translating the page (it turned the Spanish
+  version into machine Portuguese on a pt-BR browser, switcher labels included). The site offers its own languages.
+- `TambaI18n.init()` is the first thing `main.js` does: the statement is split into word spans and the hero title
+  into lines right after, so any translation has to land before that.
 - The 4.5s no-frames fallback in `main.js` waits while `document.hidden` is true (a tab opened in the background
   gets no animation frames) and restarts Lenis when it does fire. Before 2026-11-03 it killed the preloader
   timeline in background tabs and left Lenis stopped, so the page could not scroll.
@@ -175,10 +184,10 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   a copy of `Brand/Logo-Babson-College-Horizontal-RGB_(2).svg` with the Inkscape metadata stripped, original
   Babson green #006644, never recolored or distorted). One photo per site. Do not add others or reuse it
   elsewhere. Photo and logo belong to Babson: same permission conversation. (The seal was used until 2026-11-03.)
-- **Bemol can be named** (founder's decision, 2026-11-03): it is the anchor partner, logo in the band under the
-  hero linking to https://www.bemol.com.br. `assets/brand/bemol-logo.svg` is Bemol's own logo (blue #0196D7 and
-  red #EE3C34, from bemol.com.br), never recolored. Sentence on the site: "Bemol is one of the largest retailers
-  in northern Brazil, and the operation where our solutions prove themselves first." No numbers yet.
+- **Bemol is not on the site until there is an official OK** (founder, 2026-11-03, after a few hours with an
+  "Anchor partner" band under the hero). When the OK comes, rebuild the band from the 2026-11-03 entry in
+  `docs/HISTORY.md` (logo from bemol.com.br in its own colors, link to https://www.bemol.com.br) and add ES/PT
+  entries for its sentence.
 - Visual direction (2026-11-03, after comparing with gothrust.com.br and nextautomation.us): the site shows the
   product, not stock photos or full-bleed video. Visual proof goes in the first two screens (hero mock, partner
   band, lever strips). No photos of people from image banks. A real founders photo is welcome when they take one.
@@ -188,8 +197,8 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 - Mock UI numbers ("38 seconds", "$3.80 instead of $11", "61 hours", "$18,400", "+0.9 pts", etc.) are
   illustrative. Replace them if real results exist.
-- **The "+1% net profit in one year" number** (pending): needs Denis to release it. When he does, it goes into the
-  anchor partner band ("+1% net profit in one year with our credit pricing engine") or a proof line under the hero.
+- **The "+1% net profit in one year" number** (pending): needs Denis to release it, together with the official OK
+  to name Bemol. Then it goes into the anchor partner band or a proof line under the hero.
 - **Commercial guarantee** (pending): "If the pilot doesn't move the number we agreed on, you don't pay to scale it."
   Changes the billing model. Decide with Daniel before adding it to the process section.
 - "A partner replies within two business days." Not yet confirmed.

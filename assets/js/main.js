@@ -7,6 +7,12 @@
   // Where contact form messages go. Replace with the real inbox.
   const CONTACT_EMAIL = 'info@tambatech.ai';
 
+  // Language: English in the HTML, Spanish and Portuguese from assets/js/i18n.js. Must run before any animation
+  // touches the text (the statement is split into words, the hero title into lines).
+  const i18n = window.TambaI18n;
+  const t = (s) => (i18n ? i18n.t(s) : s);
+  if (i18n) i18n.init();
+
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s, c = document) => c.querySelector(s);
@@ -246,9 +252,9 @@
     const sale = $('.hm-sale', el), offer = $('.hm-offer', el);
     const amt = $('.hm-amt', el), n = $('.hm-n', el), rate = $('.hm-rate', el), why = $('.hm-why', el);
     const scenes = [
-      { n: '6',  amt: '$860',   rate: '3.4% a month', why: 'Safer offer for a new customer' },
-      { n: '12', amt: '$2,150', rate: '2.6% a month', why: 'Loyal customer, lower risk' },
-      { n: '10', amt: '$1,240', rate: '2.9% a month', why: 'Lowest rate that keeps the margin' }
+      { n: '6',  amt: '$860',   rate: t('3.4% a month'), why: t('Safer offer for a new customer') },
+      { n: '12', amt: '$2,150', rate: t('2.6% a month'), why: t('Loyal customer, lower risk') },
+      { n: '10', amt: '$1,240', rate: t('2.9% a month'), why: t('Lowest rate that keeps the margin') }
     ];
     const tl = gsap.timeline({ repeat: -1, delay: 6.5, paused: true });
     scenes.forEach((s) => {
@@ -564,7 +570,7 @@
       const open = !document.body.classList.contains('menu-open');
       document.body.classList.toggle('menu-open', open);
       burger.setAttribute('aria-expanded', String(open));
-      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      burger.setAttribute('aria-label', open ? t('Close menu') : t('Open menu'));
       menu.setAttribute('aria-hidden', String(!open));
       if (lenisRef) open ? lenisRef.stop() : lenisRef.start();
     });
@@ -592,7 +598,7 @@
         $('#' + id).parentElement.classList.toggle('has-error', !valid);
         if (!valid) ok = false;
       });
-      if (!ok) { note.textContent = 'Please add your name and a valid email.'; return; }
+      if (!ok) { note.textContent = t('Please add your name and a valid email.'); return; }
 
       const company = (data.get('company') || '').toString().trim();
       const interest = data.get('interest');
@@ -600,7 +606,7 @@
       const subject = `${interest} · ${company || name}`;
       const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInterest: ${interest}\n\n${message}`;
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      note.textContent = 'Thanks. Your email app should open with the message ready to send.';
+      note.textContent = t('Thanks. Your email app should open with the message ready to send.');
     });
   }
 })();

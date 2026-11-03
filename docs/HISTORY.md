@@ -213,3 +213,6 @@ and back every strong claim with a rule we follow.
 - Clip B (drone, 8 s) is live by default; `?clip=a` shows clip A so the founder can compare in place. Raw videos
   are git ignored (`Brand/videos/`, 235 MB).
 - Checked in Chrome at 1440×800: loads lazily, plays in view, pauses out of view, no console errors.
+- The founder picked clip A (the low angle on the river). It is now `river.*`; clip B and the `?clip=a` switch
+  are gone. He also asked about the Wix.com look (blurred, soft background behind the text): kept the video
+  framed instead, see CLAUDE.md brand rules (no gradients or glows) and the reasoning in the chat of that day.

@@ -282,11 +282,6 @@
     const fig = $('.river');
     const vid = fig && $('video', fig);
     if (!vid || !('IntersectionObserver' in window)) return;
-    // Temporary: ?clip=a shows the other candidate for comparison.
-    if (new URLSearchParams(location.search).get('clip') === 'a') {
-      $$('source', vid).forEach((s) => { s.dataset.src = s.dataset.src.replace('river.', 'river-a.'); });
-      vid.poster = 'assets/media/river-a-poster.webp';
-    }
     let loaded = false;
     const load = () => {
       if (loaded) return;

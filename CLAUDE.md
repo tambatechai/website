@@ -187,15 +187,15 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   Babson green #006644, never recolored or distorted). One photo and one video per site: the campus (where the
   team comes from) and the river (where the name comes from), both in About. Do not add others or reuse them
   elsewhere. Photo and logo belong to Babson: same permission conversation.
-- **River video** (2026-11-03): a Pexels drone clip chosen by the founder (source files in `Brand/videos/`, git
-  ignored, 4K 60fps). `assets/media/river.webm` (VP9, 1280×720, 3 Mbps, 8 s, 3.2 MB) with `river.mp4` (H.264,
-  2.7 MB) as fallback, poster `river-poster.webp`. No fish on screen (brand rule), no text over the video.
+- **River video** (2026-11-03): a Pexels clip chosen by the founder, low camera gliding over a dark river
+  (Pexels 13455995; source in `Brand/videos/`, git ignored, 4K 60fps). `assets/media/river.webm` (VP9, 1280×720,
+  4 s loop, 5.4 MB) with `river.mp4` (H.264, 6.8 MB) as fallback, poster `river-poster.webp`. The water detail
+  makes it heavier than a drone shot; it still only loads near the viewport. No fish on screen (brand rule), no text over the video.
   Caption: "A river in the Amazon. It rises and falls by meters every year." Location unknown, so the caption
   does not name a river. Making the files: this Mac has no ffmpeg; `avconvert` (macOS) downscales to 720p
   (`--preset Preset1280x720`, also `--start/--duration` to trim) but cannot set a bitrate, so the final encode was
   done in Chrome with a canvas + MediaRecorder page posting the blob to a tiny local Python server (see
-  docs/HISTORY.md, 2026-11-03). `?clip=a` swaps in the second candidate (`river-a.*`); remove it, and the
-  river-a files, once the founder picks. (The seal was used until 2026-11-03.)
+  docs/HISTORY.md, 2026-11-03). (The seal was used until 2026-11-03.)
 - **Bemol is not on the site until there is an official OK** (founder, 2026-11-03, after a few hours with an
   "Anchor partner" band under the hero). When the OK comes, rebuild the band from the 2026-11-03 entry in
   `docs/HISTORY.md` (logo from bemol.com.br in its own colors, link to https://www.bemol.com.br) and add ES/PT

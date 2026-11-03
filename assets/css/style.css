@@ -663,13 +663,16 @@ html:not(.js) .preloader { display: none; }
 .origin-text p.muted { font-size: 15px; margin-top: 32px; }
 .say { display: flex; align-items: center; gap: 10px; font-size: 14px; letter-spacing: 0.04em; color: var(--slate); margin: 4px 0 0; }
 
-/* the river: the one video on the site */
-.river { margin: clamp(56px, 7vw, 96px) 0 0; }
+/* the river: the one video on the site, edge to edge */
+.river { width: 100vw; margin: clamp(56px, 7vw, 96px) 0 0 calc(50% - 50vw); }
 .river video {
-  display: block; width: 100%; height: clamp(220px, 34vw, 540px);
-  object-fit: cover; border-radius: var(--radius); background: var(--navy);
+  display: block; width: 100%; height: clamp(260px, 50vw, 760px);
+  object-fit: cover; background: var(--navy);
 }
-.river figcaption { margin: 16px 0 0; font-size: 13px; color: var(--slate); }
+.river figcaption {
+  max-width: calc(var(--maxw) + var(--gutter) * 2); margin: 16px auto 0; padding: 0 var(--gutter);
+  font-size: 13px; color: var(--slate);
+}
 
 .traits {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;

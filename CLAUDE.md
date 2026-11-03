@@ -191,7 +191,9 @@ C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   (Pexels 13455995; source in `Brand/videos/`, git ignored, 4K 60fps). `assets/media/river.webm` (VP9, 1280×720,
   4 s loop, 5.4 MB) with `river.mp4` (H.264, 6.8 MB) as fallback, poster `river-poster.webp`. The water detail
   makes it heavier than a drone shot; it still only loads near the viewport. No fish on screen (brand rule), no text over the video.
-  Caption: "A river in the Amazon. It rises and falls by meters every year." Location unknown, so the caption
+  Full bleed, edge to edge of the viewport (`width: 100vw; margin-left: calc(50% - 50vw)`), no radius, height
+  clamp(260px, 50vw, 760px); the caption stays aligned with the container. Caption: "A river in the Amazon. It
+  rises and falls by meters every year." Location unknown, so the caption
   does not name a river. Making the files: this Mac has no ffmpeg; `avconvert` (macOS) downscales to 720p
   (`--preset Preset1280x720`, also `--start/--duration` to trim) but cannot set a bitrate, so the final encode was
   done in Chrome with a canvas + MediaRecorder page posting the blob to a tiny local Python server (see

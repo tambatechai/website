@@ -216,3 +216,5 @@ and back every strong claim with a rule we follow.
 - The founder picked clip A (the low angle on the river). It is now `river.*`; clip B and the `?clip=a` switch
   are gone. He also asked about the Wix.com look (blurred, soft background behind the text): kept the video
   framed instead, see CLAUDE.md brand rules (no gradients or glows) and the reasoning in the chat of that day.
+- "Sangra": the video now runs edge to edge of the viewport (100vw trick), no radius, up to 760px tall, caption
+  aligned with the container. The campus photo stays inside the container with rounded corners.

@@ -123,3 +123,7 @@ and back every strong claim with a rule we follow.
   (Babson green #006644). The seal asset was deleted from `assets/brand/`; the source stays in `Brand/`.
 - `.founded` block: 220px wide logo, vertical hairline, then the "Founded in Boston..." line. On mobile the logo
   (180px) sits above the text. Checked at 1440×800.
+
+## 2026-11-03 · Solutions headline
+
+- "Two ways we pay for ourselves." became "Two ways it pays for itself." (a co-founder's wording, approved by Lucas).

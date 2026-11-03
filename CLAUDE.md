@@ -96,7 +96,7 @@ CDN scripts (pinned versions, loaded with `defer`): GSAP 3.12.5, ScrollTrigger 3
 3. **Hero** (navy): line-mask headline reveal, arc draws in, content fades and lifts on scroll.
 4. **Statement** (ivory): words light up one by one with scroll (`[data-words]`). "Every project we take on has
    one job: more revenue or less cost."
-5. **Solutions** `#solutions`: "Two ways we pay for ourselves." Two lever cards (`.levers`): More revenue (light)
+5. **Solutions** `#solutions`: "Two ways it pays for itself." Two lever cards (`.levers`): More revenue (light)
    and Lower cost (navy), each with 4 product lines and a link to the form that preselects the interest.
    Below, "How we deliver": bento with 3 equal cards (Implementation, Proven solutions, Incubation).
 6. **In practice** `#practice` (navy): 4 auto-playing tabs with mock UIs, each labeled with its lever:
